@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Gift Idea Generator</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 17px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #6c63ff;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #6c63ff;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #554ddf;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9ff;
+            border-radius: 12px;
+            border-left: 5px solid #6c63ff;
+        }
+
+        .result h2 {
+            margin-top: 0;
+        }
+
+        .result-text {
+            white-space: pre-line;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .error {
+            margin-top: 20px;
+            padding: 15px;
+            background: #ffe6e6;
+            color: #b00020;
+            border-radius: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #777;
+            font-size: 14px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <h1>🎁 AI Gift Idea Generator</h1>
+
+            <p>
+                Get personalized gift ideas based on age,
+                budget and interests.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <form method="POST">
+
+                <div class="form-group">
+
+                    <label for="relationship">
+                        Relationship
+                    </label>
+
+                    <input
+                        type="text"
+                        id="relationship"
+                        name="relationship"
+                        placeholder="Example: Friend"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="age">
+                        Age
+                    </label>
+
+                    <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        placeholder="Example: 22"
+                        min="1"
+                        max="120"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="budget">
+                        Budget (₹)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="budget"
+                        name="budget"
+                        placeholder="Example: 1000"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="interest">
+                        Interest / Hobby
+                    </label>
+
+                    <input
+                        type="text"
+                        id="interest"
+                        name="interest"
+                        placeholder="Example: Gaming"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit">
+                    ✨ Generate Gift Ideas
+                </button>
+
+            </form>
+
+
+            {% if error %}
+
+                <div class="error">
+                    <strong>Error:</strong> {{ error }}
+                </div>
+
+            {% endif %}
+
+
+            {% if gift_ideas %}
+
+                <div class="result">
+
+                    <h2>🎁 Gift Ideas</h2>
+
+                    <div class="result-text">
+                        {{ gift_ideas }}
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <div class="footer">
+
+            AI Gift Idea Generator | Powered by Gemini
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
